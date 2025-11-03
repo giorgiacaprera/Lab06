@@ -1,6 +1,7 @@
 import flet as ft
 from UI.view import View
 from model.model import Autonoleggio
+from UI.alert import AlertManager
 
 '''
     CONTROLLER:
@@ -29,3 +30,4 @@ class Controller:
 
     # Altre Funzioni Event Handler
     # TODO
+

@@ -37,6 +37,14 @@ class Autonoleggio:
         """
 
         # TODO
+        try:
+            query = 'SELECT * FROM automobile'
+            result = self.db.esegui_query(query)
+            automobili = [Automobile(*row) for row in result]
+            return automobili
+        except Exception as e:
+            print(f'Errore durante la lettura delle automobili: {e}')
+            return None
 
     def cerca_automobili_per_modello(self, modello) -> list[Automobile] | None:
         """
@@ -45,3 +53,13 @@ class Autonoleggio:
             :return: una lista con tutte le automobili di marca e modello indicato oppure None
         """
         # TODO
+        try:
+            query = ('SELECT * FROM automobile '
+                     'WHERE modello LIKE %s')
+            result = self.db.esegui_query(query, (f'%{modello}%',))
+            automobili = [Automobile(*row) for row in result]
+            return automobili
+        except Exception as e:
+            print(f'Errore durante la ricerca del modello: {e}')
+            return None
+
