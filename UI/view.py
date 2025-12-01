@@ -64,13 +64,8 @@ class View:
 
         # Altri Pulsanti da implementare (es. "Mostra" e "Cerca")
         # TODO
-        self.btn_mostra_auto = ft.ElevatedButton("Mostra", on_click=self.controller.mostra_automobili)
-        self.lista_auto = ft.ListView(expand=True, spacing=10, padding=10)
-
-
-        self.input_modello = ft.TextField(label="Modello")
-        self.btn_cerca = ft.ElevatedButton("Cerca", on_click=self.controller.cerca_automobili_modello)
-        self.lista_ricerca = ft.ListView(expand=True, spacing=10, padding=10)
+        pulsante_mostra_automobili = ft.ElevatedButton('Mostra', on_click=self.controller.aggiorna_lista_auto)
+        pulsante_cerca_automobili = ft.ElevatedButton('Cerca', on_click=self.controller.cerca_automobili_per_modello)
 
         # --- LAYOUT ---
         self.page.add(
@@ -90,17 +85,15 @@ class View:
 
             # Sezione 3
             # TODO
-            ft.Text('Automobili', size=20, weight=ft.FontWeight.BOLD),
-            self.btn_mostra_auto,
+            ft.Row(controls=[ft.Text("Automobili", size=20), pulsante_mostra_automobili]),
             self.lista_auto,
-
+            ft.Divider(),
 
             # Sezione 4
             # TODO
-            ft.Text('Cerca Automobile', size=20, weight=ft.FontWeight.BOLD),
-            self.input_modello,
-            self.btn_cerca,
-            self.lista_ricerca
+            ft.Text("Cerca Automobile", size=20),
+            ft.Row(controls=[self.input_modello_auto, pulsante_cerca_automobili]),
+            self.lista_auto_ricerca
         )
 
     def cambia_tema(self, e):
